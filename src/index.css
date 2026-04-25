@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6C5CE7;
+  --color-pulse: #6C5CE7;
+  --color-border-subtle: #E2E8F0;
+  --color-border-pulse: #E2E8F0;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#F8FAFC] text-[#1E293B] antialiased;
+  }
+}
