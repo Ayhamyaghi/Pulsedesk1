@@ -1,118 +1,194 @@
-# PulseDesk
+# PulseDesk – Trainee Daily Reporting Platform
 
-PulseDesk is an internal trainee reporting and operational visibility platform designed for Folowise-style training environments where daily progress tracking, blocker visibility, and trainee accountability need to be centralized, structured, and easy to review.
+Centralize every trainee report, blocker, and daily update in one operational dashboard.
 
-The current repository represents a high-fidelity frontend prototype built with React, Vite, TypeScript, React Router, Tailwind CSS, and local in-memory state. It models the core product flows for both Trainee and Admin roles and establishes the functional foundation for a future production-grade implementation backed by a secure API, persistent database, authentication layer, and file storage.
-
-PulseDesk is intended to replace fragmented daily report submissions through private chats with a single internal system that provides a consistent reporting format, role-based dashboards, report history, blocker tracking, and trainee account management.
+PulseDesk is an internal daily reporting platform for training teams. It gives trainees a structured way to submit daily progress reports and gives admins a single place to monitor submissions, review blockers, manage trainee accounts, and track day-to-day activity without relying on scattered private chats.
 
 ---
 
-## Product Context
+## What is PulseDesk?
 
-In many internship and trainee programs, daily updates are submitted manually through messaging tools. This creates predictable operational problems:
+Modern training teams often manage daily updates through private messages, spreadsheets, or informal chat threads. This creates a fragmented workflow where managers must manually check who submitted, who missed their report, which trainees are blocked, and what each trainee worked on across different conversations.
 
-- Reports are scattered across multiple private conversations.
-- Managers spend unnecessary time checking who submitted and who did not.
-- There is no consistent reporting structure.
-- Blockers are not visible in one place.
-- Historical progress is difficult to review per trainee.
-- Trainee account and status management is not centralized.
+PulseDesk turns that workflow into a centralized internal system:
 
-PulseDesk solves this by introducing a structured daily reporting workflow where trainees submit reports through a dedicated interface and admins review activity through centralized dashboards.
+- Trainees submit structured daily reports
+- Admins monitor all trainee activity from one dashboard
+- Blockers are visible immediately
+- Report history is searchable and reviewable
+- Trainee accounts can be managed from the admin area
+- Daily reporting follows one consistent format
+
+The current repository is a frontend-first prototype that models the main product flows using React, TypeScript, Vite, Tailwind CSS, React Router, and mock in-memory data.
+
+---
+
+## Key Features
+
+### Role-based experience
+
+| Role | Description |
+|---|---|
+| Trainee | Creates, edits, and reviews their own daily reports |
+| Admin | Reviews all reports, tracks blockers, and manages trainee accounts |
+
+---
+
+### Trainee dashboard
+
+A trainee can quickly see:
+
+- Today’s report status
+- Recent submitted reports
+- Quick action to create or edit today’s report
+- Personal reporting history
+- Report details for previous days
+
+---
+
+### Daily report submission
+
+Each report captures the operational details a manager needs:
+
+- Report date
+- Start time
+- End time
+- Total working hours
+- Work completed
+- Blocker status
+- Blocker details
+- Next steps
+- Optional notes
+- Screenshot attachments
+
+Reports are designed to give both a short daily summary and enough context for a manager to understand actual progress.
+
+---
+
+### Report editing rules
+
+PulseDesk supports controlled report editing:
+
+- Trainees can edit today’s report
+- Trainees can edit yesterday’s report
+- Older reports become read-only from the trainee side
+
+This keeps the workflow flexible enough for real daily usage while protecting older reporting history from uncontrolled changes.
+
+---
+
+### Admin dashboard
+
+The admin dashboard provides a centralized operational overview:
+
+- Total trainees
+- Reports submitted today
+- Reports missing today
+- Reports with blockers
+- Trainee overview
+- Today’s blocker reports
+
+The goal is to help the manager understand the current training status in seconds.
+
+---
+
+### Admin report management
+
+Admins can browse and inspect trainee reports across the team.
+
+Supported report management capabilities include:
+
+- View all trainee reports
+- Search reports by trainee, date, or report content
+- Filter reports with blockers
+- Open detailed report views
+- Review trainee work and blocker context
+
+---
+
+### Trainee account management
+
+Admins can manage trainee accounts directly from the system.
+
+Supported actions include:
+
+- Add trainee accounts
+- View trainee list
+- Edit trainee information
+- Activate trainees
+- Deactivate trainees
+
+This gives the platform a basic internal administration layer instead of relying only on hardcoded users.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| UI framework | React 19 + TypeScript |
+| Build tool | Vite 6 |
+| Routing | React Router |
+| Styling | Tailwind CSS v4 |
+| Icons | Lucide React |
+| Date utilities | date-fns |
+| Animation | Motion |
+| State management | React Context + local in-memory state |
+| Data source | Mock-seeded frontend data |
+
+The current version does not use a real backend yet. Application state is held in React Context and resets when the page reloads.
 
 ---
 
 ## Current Implementation Status
 
-This repository is currently a frontend-first prototype.
+PulseDesk currently includes:
 
-It includes:
-
-- Role-based UI flows for Admin and Trainee users.
-- Mock authentication via role selection.
-- In-memory application state using React Context.
-- Mock trainee and report data.
-- Daily report creation and editing flows.
-- Admin report browsing and filtering.
-- Trainee account activation/deactivation.
-- Responsive dashboard-style interface.
-- Tailwind-based design system primitives.
-
-It does not currently include:
-
-- Real backend API integration.
-- Persistent database storage.
-- Production authentication.
-- JWT/session handling.
-- Real file upload storage.
-- Server-side validation.
-- Audit logging.
-- Authorization enforcement at API level.
-- Deployment configuration for production environments.
-
-The repository should therefore be treated as a product prototype and frontend architecture baseline, not yet as a production-ready full-stack system.
-
----
-
-## Technology Stack
-
-### Frontend
-
-- React 19
-- TypeScript
-- Vite
-- React Router
-- Tailwind CSS v4
-- date-fns
-- lucide-react
-- motion
-
-### Local State
-
-- React Context API
-- useState-based in-memory state
+- Frontend application shell
+- Login screen with role selection
+- Admin and trainee route separation
+- Trainee dashboard
+- Trainee report list
+- Trainee report detail page
+- Trainee report create/edit flow
+- Admin dashboard
+- Admin report management page
+- Admin trainee management page
 - Mock users and mock reports
+- Reusable UI components
+- TypeScript domain models
 
-### Build Tooling
+PulseDesk does not yet include:
 
-- Vite
-- TypeScript compiler checks
-- Tailwind Vite plugin
+- Real authentication
+- Persistent database
+- Backend API
+- JWT/session handling
+- Server-side authorization
+- Real file storage
+- Production deployment configuration
+- Automated test suite
+
+This means the repository should currently be treated as a high-quality product prototype and frontend foundation, not a finished production system.
 
 ---
 
-## Repository Structure
+## Running Locally
 
-```text
-.
-├── architecture.md
-├── spec.md
-├── README.md
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-├── index.html
-└── src
-    ├── App.tsx
-    ├── main.tsx
-    ├── index.css
-    ├── types.ts
-    ├── components
-    │   ├── Button.tsx
-    │   ├── Card.tsx
-    │   ├── Layout.tsx
-    │   └── Sidebar.tsx
-    ├── context
-    │   └── AppContext.tsx
-    └── pages
-        ├── Login.tsx
-        ├── trainee
-        │   ├── Dashboard.tsx
-        │   ├── ReportsList.tsx
-        │   ├── ReportDetail.tsx
-        │   └── ReportEdit.tsx
-        └── admin
-            ├── Dashboard.tsx
-            ├── ReportsManage.tsx
-            └── TraineeManage.tsx
+Prerequisites: Node.js 18+
+
+```bash
+# Install dependencies
+npm install
+
+# Start the development server on http://localhost:3000
+npm run dev
+
+# Type-check the project
+npm run lint
+
+# Build for production
+npm run build
+
+# Preview the production build
+npm run preview
